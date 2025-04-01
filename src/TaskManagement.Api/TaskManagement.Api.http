@@ -1,0 +1,56 @@
+@TaskManagement.Api_HostAddress = http://localhost:7192
+
+# Get all tasks
+GET {{TaskManagement.Api_HostAddress}}/api/task
+Accept: application/json
+
+###
+
+# Get task by ID
+GET {{TaskManagement.Api_HostAddress}}/api/task/1
+Accept: application/json
+
+###
+
+# Create a new task
+POST {{TaskManagement.Api_HostAddress}}/api/task
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Example Task",
+  "description": "This is an example task description",
+  "assignedTo": "user@example.com"
+}
+
+###
+
+# Update task status
+PUT {{TaskManagement.Api_HostAddress}}/api/task/1/status
+Content-Type: application/json
+Accept: application/json
+
+{
+  "status": "InProgress",
+  "requestedBy": "manager@example.com"
+}
+
+###
+
+# Assign task to user
+PUT {{TaskManagement.Api_HostAddress}}/api/task/1/assign
+Content-Type: application/json
+Accept: application/json
+
+{
+  "assignee": "newuser@example.com",
+  "requestedBy": "manager@example.com"
+}
+
+###
+
+# Delete task
+DELETE {{TaskManagement.Api_HostAddress}}/api/task/1
+Accept: application/json
+
+###
